@@ -1,22 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+  <meta charset="utf-8" />
   <title>CENSYS Login</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
-<body class="login-body">
+<body class="center">
+  <h2>CENSYS Login</h2>
 
-  <h2>CENSYS Barangay Login</h2>
-
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-
-  <p id="error"></p>
+  <div class="card">
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="btnLogin">Login</button>
+    <p id="err" class="err"></p>
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="js/firebase.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="/js/firebase.js"></script>
+
+  <script>
+    document.getElementById("btnLogin").onclick = () => {
+      const email = document.getElementById("email").value.trim();
+      const pw = document.getElementById("password").value.trim();
+      firebase.auth().signInWithEmailAndPassword(email, pw)
+        .then(() => window.location.href = "/firestation/index.html")
+        .catch(e => document.getElementById("err").innerText = e.message);
+    };
+  </script>
 </body>
 </html>
