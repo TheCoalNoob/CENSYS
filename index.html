@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>CENSYS Dashboard</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    #ledStatus { font-size: 2em; font-weight: bold; }
-    .on { color: green; }
-    .off { color: red; }
-  </style>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <title>CENSYS Barangay Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>CENSYS Dashboard</h1>
-  <p>LED State: <span id="ledStatus">Loading...</span></p>
 
-  <script>
-    // ===== Firebase Config =====
-    const firebaseConfig = {
-      databaseURL: "https://censys-c8752-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    };
+<h2>Barangay Fire Monitoring Dashboard</h2>
+<div id="map"></div>
 
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/map.js"></script>
 
-    const ledStatusEl = document.getElementById("ledStatus");
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+</script>
 
-    // Listen for changes in Firebase
-    const ledRef = database.ref("/ledState");
-    ledRef.on("value", (snapshot) => {
-      const state = snapshot.val();
-      if (state) {
-        ledStatusEl.textContent = "ON";
-        ledStatusEl.className = "on";
-      } else {
-        ledStatusEl.textContent = "OFF";
-        ledStatusEl.className = "off";
-      }
-    }, (error) => {
-      console.error("Firebase read failed: ", error);
-      ledStatusEl.textContent = "Error";
-      ledStatusEl.className = "off";
-    });
-  </script>
 </body>
 </html>
