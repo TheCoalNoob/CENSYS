@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Barangay Kalunasan</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h2>Barangay Kalunasan – Fire Monitoring</h2>
+
+<div id="map" style="height:90vh;"></div>
+
+<script src="../js/firebase.js"></script>
+<script src="../js/barangay.js"></script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+</script>
+
+<script>
+  window.BARANGAY_KEY = "Kalunasan";
+  window.BARANGAY_CENTER = { lat: 10.3292, lng: 123.8872 };
+</script>
+
+</body>
+</html>
