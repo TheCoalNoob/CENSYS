@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fire Station Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h2>Fire Station – Barangay Alerts</h2>
+
+<div id="folders">
+  <button onclick="openBarangay('kalunasan')">Barangay Kalunasan</button>
+  <button onclick="openBarangay('san-nicolas')">Barangay San Nicolas</button>
+  <button onclick="openBarangay('kalubihan')">Barangay Kalubihan</button>
+</div>
+
+<script>
+function openBarangay(b) {
+  window.location.href = "../barangay/" + b + ".html";
+}
+</script>
+
+</body>
+</html>
